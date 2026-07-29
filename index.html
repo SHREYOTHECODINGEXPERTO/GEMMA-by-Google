@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build with Gemma - GDG TIU Buildathon RSVP</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg class="gemini-sparkle" viewBox="0 0 24 24" width="28" height="28">
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#4285f4" />
+                            <stop offset="50%" stop-color="#9b5de5" />
+                            <stop offset="100%" stop-color="#f15bb5" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#logo-grad)" d="M12 2C12 2 12 10 2 12C12 12 12 20 12 20C12 20 12 12 22 12C12 12 12 2 12 2z" />
+                </svg>
+                <span class="logo-text">Build with <span class="gemma-text">Gemma</span></span>
+            </div>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">Overview</a>
+                <a href="#rounds" class="nav-link">Roadmap</a>
+                <a href="#instructions" class="nav-link">Instructions</a>
+                <a href="#rsvp-section" class="btn btn-secondary rsvp-scroll-btn">RSVP Now</a>
+                <button class="btn btn-icon dashboard-toggle" id="navDashboardBtn" title="View Dashboard">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <!-- Left Info Column -->
+            <div class="hero-content">
+                <div class="tags-row">
+                    <span class="tag tag-google"><i class="fa-brands fa-google"></i> Google AI</span>
+                    <span class="tag tag-gdg"><i class="fa-solid fa-users"></i> GDG TIU</span>
+                    <span class="tag tag-campus"><i class="fa-solid fa-graduation-cap"></i> On Campus</span>
+                </div>
+                <h1 class="hero-title">
+                    Build with <span class="gradient-text">Gemma</span><br>
+                    <span class="subtitle">GDG TIU Buildathon</span>
+                </h1>
+                <p class="hero-desc">
+                    A premier 30-Hour On-Campus Hackathon challenge under Google. Join forces to build next-generation AI solutions using Google's Gemma open models. Bring your prototype and turn it into reality.
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="countdown-container">
+                    <h3 class="countdown-heading"><i class="fa-regular fa-clock"></i> HACKATHON STARTS IN</h3>
+                    <div class="countdown-timer" id="countdown">
+                        <div class="time-block">
+                            <span class="time-num" id="days">00</span>
+                            <span class="time-label">Days</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-block">
+                            <span class="time-num" id="hours">00</span>
+                            <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-block">
+                            <span class="time-num" id="minutes">00</span>
+                            <span class="time-label">Minutes</span>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-block">
+                            <span class="time-num" id="seconds">00</span>
+                            <span class="time-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-cta-group">
+                    <a href="#rsvp-section" class="btn btn-primary btn-glow">Claim Your Pass <i class="fa-solid fa-ticket"></i></a>
+                    <a href="#about" class="btn btn-outline">Explore Details <i class="fa-solid fa-chevron-down"></i></a>
+                </div>
+            </div>
+
+            <!-- Right Visual Column -->
+            <div class="hero-visual">
+                <div class="visual-glow-glow"></div>
+                <div class="visual-badge-floating floating-1">
+                    <div class="floating-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="floating-text">
+                        <span>Duration</span>
+                        <strong>30 Hours Non-Stop</strong>
+                    </div>
+                </div>
+                <div class="visual-badge-floating floating-2">
+                    <div class="floating-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <div class="floating-text">
+                        <span>Dress Code</span>
+                        <strong>Casuals On</strong>
+                    </div>
+                </div>
+                <div class="visual-badge-floating floating-3">
+                    <div class="floating-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="floating-text">
+                        <span>Venue</span>
+                        <strong>Techno India University</strong>
+                    </div>
+                </div>
+                
+                <!-- Core Gemma Graphic -->
+                <div class="gemma-orb-container">
+                    <div class="gemma-orb-outer"></div>
+                    <div class="gemma-orb-middle"></div>
+                    <div class="gemma-orb-inner">
+                        <svg class="gemma-star-icon" viewBox="0 0 24 24">
+                            <path fill="url(#logo-grad)" d="M12 2C12 2 12 10 2 12C12 12 12 20 12 20C12 20 12 12 22 12C12 12 12 2 12 2z" />
+                        </svg>
+                    </div>
+                    <div class="orb-orbital-ring">
+                        <div class="satellite sat-gemini" title="Gemini AI"><i class="fa-solid fa-sparkles"></i></div>
+                        <div class="satellite sat-android" title="Android Ecosystem"><i class="fa-brands fa-android"></i></div>
+                        <div class="satellite sat-maps" title="Google Maps API"><i class="fa-solid fa-map-location-dot"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Organized By & Quick Stats Section -->
+        <section id="about" class="about-section glass-panel">
+            <div class="section-header">
+                <h2>Organized & Backed By</h2>
+                <p>Bringing together academic excellence and Google's advanced artificial intelligence.</p>
+            </div>
+            
+            <div class="organizers-grid">
+                <div class="organizer-card">
+                    <div class="org-logo-wrapper">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4>School of the Future</h4>
+                    <p>Techno India University, West Bengal</p>
+                </div>
+                <div class="organizer-card">
+                    <div class="org-logo-wrapper">
+                        <i class="fa-brands fa-google text-primary"></i>
+                    </div>
+                    <h4>GDG On Campus</h4>
+                    <p>Techno India University</p>
+                </div>
+                <div class="organizer-card">
+                    <div class="org-logo-wrapper">
+                        <i class="fa-solid fa-robot text-violet"></i>
+                    </div>
+                    <h4>Gemma (Google AI)</h4>
+                    <p>Open models from Google DeepMind</p>
+                </div>
+            </div>
+
+            <!-- Quick Details Summary -->
+            <div class="quick-details-strip">
+                <div class="detail-item">
+                    <i class="fa-regular fa-calendar-days text-primary"></i>
+                    <div class="detail-text">
+                        <span>Date</span>
+                        <strong>31st July – 1st August</strong>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-regular fa-clock text-violet"></i>
+                    <div class="detail-text">
+                        <span>Time</span>
+                        <strong>2:00 PM – 8:00 PM (30h Event)</strong>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-map-pin text-pink"></i>
+                    <div class="detail-text">
+                        <span>Venue</span>
+                        <strong>TIU, Salt Lake, Kolkata</strong>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fa-solid fa-brain text-cyan"></i>
+                    <div class="detail-text">
+                        <span>Theme</span>
+                        <strong>Google Gemma AI Models</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hackathon Roadmap / Rounds -->
+        <section id="rounds" class="rounds-section">
+            <div class="section-title-wrapper">
+                <h2 class="section-title">Hackathon <span class="gradient-text">Roadmap</span></h2>
+                <p class="section-subtitle">A step-by-step breakdown of the 30-hour building sprint.</p>
+            </div>
+            
+            <div class="timeline-container">
+                <!-- Round 1 -->
+                <div class="timeline-card">
+                    <div class="timeline-badge">1</div>
+                    <div class="timeline-content glass-panel">
+                        <span class="round-tag">Stage 01</span>
+                        <h3>Problem Statement Breakdown & Demo Discussion</h3>
+                        <p>Deconstruct the challenges, align with your team, and participate in worldwide developer demo discussions regarding the power of Gemma open models.</p>
+                    </div>
+                </div>
+                <!-- Round 2 -->
+                <div class="timeline-card">
+                    <div class="timeline-badge">2</div>
+                    <div class="timeline-content glass-panel">
+                        <span class="round-tag">Stage 02</span>
+                        <h3>Progress Check & Tech Stack Assessment</h3>
+                        <p>Present your architecture design, get feedback from expert mentors, and finalize the technologies, libraries, and Gemma parameters you will use.</p>
+                    </div>
+                </div>
+                <!-- Final Round -->
+                <div class="timeline-card">
+                    <div class="timeline-badge">3</div>
+                    <div class="timeline-content glass-panel">
+                        <span class="round-tag highlight">Final Round</span>
+                        <h3>Build, Deploy & Present</h3>
+                        <p>Complete your AI prototype, prepare your slide decks and code demonstrations, and pitch directly on-campus to our judging panel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perks, Guidelines, and Instructions Split Section -->
+        <section id="instructions" class="info-split-grid">
+            <!-- Important Instructions -->
+            <div class="info-card glass-panel border-glow-blue">
+                <h3 class="info-title"><i class="fa-solid fa-circle-info text-primary"></i> Important Instructions</h3>
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-check"></i> Come with your prototypes ready.</li>
+                    <li><i class="fa-solid fa-check"></i> Support from a mentor or a real-world report guide is a must.</li>
+                    <li><i class="fa-solid fa-check"></i> Evaluation takes place entirely on-site.</li>
+                    <li><i class="fa-solid fa-check"></i> Winners will be announced via registered email.</li>
+                </ul>
+            </div>
+
+            <!-- Perks & Benefits -->
+            <div class="info-card glass-panel border-glow-violet">
+                <h3 class="info-title"><i class="fa-solid fa-gift text-violet"></i> Perks & Goodies</h3>
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-award"></i> Official certificates for all active participants.</li>
+                    <li><i class="fa-solid fa-cube"></i> Swag bags, stickers, and exclusive hackathon goodies.</li>
+                    <li><i class="fa-solid fa-burger"></i> Fully funded meals and snacks to keep you fueled.</li>
+                    <li><i class="fa-solid fa-droplet"></i> Free access to hydration centers and vending machines.</li>
+                </ul>
+            </div>
+
+            <!-- Rules -->
+            <div class="info-card glass-panel border-glow-pink full-width-card">
+                <div class="rules-container">
+                    <div class="rules-text">
+                        <h3 class="info-title"><i class="fa-solid fa-triangle-exclamation text-pink"></i> Rules & Dress Code</h3>
+                        <ul class="info-list">
+                            <li><i class="fa-solid fa-shirt"></i> <strong>Dress Code:</strong> Casuals On (Dress comfortably for the 30-hour marathon).</li>
+                            <li><i class="fa-solid fa-ban text-pink"></i> <strong>Strict Rule:</strong> <span class="highlight-rule">NO OUTSIDE FOOD IS ALLOWED INSIDE</span> the university campus.</li>
+                            <li><i class="fa-solid fa-circle-exclamation"></i> <strong>Arrival:</strong> Ensure your team arrives before the 2:00 PM start time on July 31st.</li>
+                        </ul>
+                    </div>
+                    <div class="rules-illustration">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        <span>Free Fuel Inside</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Form Section -->
+        <section id="rsvp-section" class="rsvp-section glass-panel">
+            <div class="rsvp-form-header">
+                <h2>Secure Your Hackathon Spot</h2>
+                <p>Register your RSVP today to instantly generate your dynamic entry pass badge.</p>
+            </div>
+            
+            <form id="rsvpForm" class="rsvp-form">
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" id="email" placeholder="example@email.com" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-phone"></i>
+                            <input type="tel" id="phone" placeholder="Enter mobile number" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="college">College / University <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <select id="college" required>
+                                <option value="" disabled selected>Select your institution</option>
+                                <option value="Techno India University, West Bengal">Techno India University, West Bengal</option>
+                                <option value="Techno Main Salt Lake">Techno Main Salt Lake</option>
+                                <option value="Other">Other (Specify below)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden / Custom College input if 'Other' is chosen -->
+                <div class="form-group d-none" id="customCollegeGroup">
+                    <label for="customCollege">Institution Name <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <input type="text" id="customCollege" placeholder="Enter your college name">
+                    </div>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="teamName">Team Name <span class="optional">(Optional)</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-users-rectangle"></i>
+                            <input type="text" id="teamName" placeholder="e.g., Gemma Gladiators">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="aiExperience">Gemma / AI Experience <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-brain"></i>
+                            <select id="aiExperience" required>
+                                <option value="" disabled selected>Select your experience level</option>
+                                <option value="Beginner">Beginner (Curious / Just Started)</option>
+                                <option value="Intermediate">Intermediate (Built basic APIs / Models)</option>
+                                <option value="Advanced">Advanced (Experienced AI Developer)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="githubUrl">GitHub / Portfolio Link <span class="optional">(Optional)</span></label>
+                    <div class="input-wrapper">
+                        <i class="fa-brands fa-github"></i>
+                        <input type="url" id="githubUrl" placeholder="https://github.com/your-profile">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="prototypeDesc">Prototype Concept <span class="optional">(Brief description of what you plan to build)</span></label>
+                    <textarea id="prototypeDesc" rows="3" placeholder="Explain your core AI idea or prototype details (optional)..."></textarea>
+                </div>
+
+                <!-- Checkboxes -->
+                <div class="checkbox-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="mentorSupport" required>
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">I confirm that our team has a prototype ready and support from a mentor or a real-world report guide. <span class="required">*</span></span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="agreeRules" required>
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">I agree to the rule: <strong>NO outside food is allowed inside</strong> and will follow comfortable dress code (Casuals On). <span class="required">*</span></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-large">
+                    Register RSVP & Generate Pass <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Ticket Modal / Output Section -->
+    <div class="modal" id="ticketModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+            
+            <div class="modal-header">
+                <h2>🎉 RSVP Confirmed!</h2>
+                <p>Your entry ticket badge is ready. Present this at the check-in counter on July 31st.</p>
+            </div>
+
+            <!-- Dynamic Ticket Component -->
+            <div class="ticket-wrapper">
+                <!-- Outer styling container for the screenshot render -->
+                <div id="renderArea" style="padding: 20px; background: transparent; display: inline-block;">
+                    <div class="ticket-badge" id="gemmaTicket">
+                        <!-- Ticket Header -->
+                        <div class="t-header">
+                            <div class="t-logo">
+                                <svg viewBox="0 0 24 24" width="20" height="20" style="vertical-align: middle;">
+                                    <path fill="#fff" d="M12 2C12 2 12 10 2 12C12 12 12 20 12 20C12 20 12 12 22 12C12 12 12 2 12 2z" />
+                                </svg>
+                                <span style="font-weight: 700; letter-spacing: 0.5px;">BUILD WITH GEMMA</span>
+                            </div>
+                            <div class="t-badge-type" id="ticketRole">DEVELOPER</div>
+                        </div>
+
+                        <!-- Holographic/Glow Effect -->
+                        <div class="ticket-shimmer"></div>
+
+                        <!-- Ticket Main Content -->
+                        <div class="t-body">
+                            <div class="t-main-info">
+                                <span class="t-label">PARTICIPANT</span>
+                                <h3 class="t-user-name" id="ticketName">John Doe</h3>
+                                
+                                <div class="t-grid">
+                                    <div>
+                                        <span class="t-label">RSVP ID</span>
+                                        <strong class="t-value text-gradient-id" id="ticketId">GEMMA-TIU-00000</strong>
+                                    </div>
+                                    <div>
+                                        <span class="t-label">TEAM NAME</span>
+                                        <strong class="t-value" id="ticketTeam">- None -</strong>
+                                    </div>
+                                </div>
+
+                                <div class="t-grid">
+                                    <div>
+                                        <span class="t-label">INSTITUTION</span>
+                                        <strong class="t-value truncate-text" id="ticketCollege">Techno India University</strong>
+                                    </div>
+                                    <div>
+                                        <span class="t-label">EXPERIENCE</span>
+                                        <strong class="t-value" id="ticketExp">Intermediate</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ticket QR Side -->
+                            <div class="t-qr-side">
+                                <canvas id="qrCanvas" width="100" height="100"></canvas>
+                                <span class="qr-label">SCAN TO CHECK-IN</span>
+                            </div>
+                        </div>
+
+                        <!-- Ticket Footer with details -->
+                        <div class="t-footer">
+                            <div class="t-footer-item">
+                                <i class="fa-solid fa-calendar-days text-primary"></i>
+                                <span>July 31 – Aug 1, 2026</span>
+                            </div>
+                            <div class="t-footer-item">
+                                <i class="fa-solid fa-location-dot text-pink"></i>
+                                <span>TIU, Salt Lake, Kolkata</span>
+                            </div>
+                        </div>
+
+                        <!-- Ticket Dotted Cut Separator -->
+                        <div class="t-notch left"></div>
+                        <div class="t-notch right"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action buttons for Ticket -->
+            <div class="ticket-actions">
+                <button class="btn btn-primary" id="downloadTicketBtn">
+                    <i class="fa-solid fa-download"></i> Download Badge (PNG)
+                </button>
+                <button class="btn btn-secondary" id="printTicketBtn">
+                    <i class="fa-solid fa-print"></i> Print Pass
+                </button>
+            </div>
+            <div class="good-luck-illustration">
+                <p>✨ Bring your prototypes ready. Good luck! ✨</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RSVP Dashboard Drawer -->
+    <div class="dashboard-drawer" id="dashboardDrawer">
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h3><i class="fa-solid fa-chart-simple text-primary"></i> RSVP Dashboard</h3>
+                <button class="drawer-close" id="drawerCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="drawer-body">
+                <!-- Statistics Panels -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <span class="stat-num" id="statTotal">0</span>
+                        <span class="stat-label">Total RSVPs</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num" id="statAdvanced">0</span>
+                        <span class="stat-label">Advanced Level</span>
+                    </div>
+                </div>
+
+                <!-- Registration List Search -->
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchRsvp" placeholder="Search by name, email, or RSVP ID...">
+                </div>
+
+                <!-- Registrations List -->
+                <div class="rsvp-list-container">
+                    <h4 class="list-heading">Active Registrations (Local Browser)</h4>
+                    <div class="rsvp-list" id="rsvpList">
+                        <!-- Filled dynamically -->
+                        <div class="empty-state">
+                            <i class="fa-regular fa-folder-open"></i>
+                            <p>No RSVPs found in this browser context.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>&copy; 2026 School of the Future & GDG On Campus TIU. All rights reserved.</p>
+                <p class="disclaimer">This event is held under Google ecosystem integration using Gemma open models.</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://maps.google.com/?q=Techno+India+University+Salt+Lake" target="_blank" class="footer-link"><i class="fa-solid fa-location-arrow"></i> Venue Map</a>
+                <span class="sep">|</span>
+                <span class="footer-credit">Built with ❤️ for GDG TIU Buildathon</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Libraries -->
+    <!-- QRious Library for Canvas QR Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <!-- Html2Canvas Library for downloading HTML element as PNG -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Main JS Application script -->
+    <script src="app.js"></script>
+</body>
+</html>
